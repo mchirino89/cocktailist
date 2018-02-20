@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		710A9BF6203CE86F0090D532 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710A9BF5203CE86F0090D532 /* AppDelegate.swift */; };
-		710A9BF8203CE86F0090D532 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710A9BF7203CE86F0090D532 /* ViewController.swift */; };
+		710A9BF8203CE86F0090D532 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710A9BF7203CE86F0090D532 /* ListController.swift */; };
 		710A9BFB203CE86F0090D532 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 710A9BF9203CE86F0090D532 /* Main.storyboard */; };
 		710A9BFD203CE86F0090D532 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 710A9BFC203CE86F0090D532 /* Assets.xcassets */; };
 		710A9C00203CE86F0090D532 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 710A9BFE203CE86F0090D532 /* LaunchScreen.storyboard */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		710A9BF2203CE86F0090D532 /* Cocktailist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cocktailist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		710A9BF5203CE86F0090D532 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		710A9BF7203CE86F0090D532 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		710A9BF7203CE86F0090D532 /* ListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
 		710A9BFA203CE86F0090D532 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		710A9BFC203CE86F0090D532 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		710A9BFF203CE86F0090D532 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,13 +55,37 @@
 			isa = PBXGroup;
 			children = (
 				710A9BF5203CE86F0090D532 /* AppDelegate.swift */,
-				710A9BF7203CE86F0090D532 /* ViewController.swift */,
-				710A9BF9203CE86F0090D532 /* Main.storyboard */,
-				710A9BFC203CE86F0090D532 /* Assets.xcassets */,
-				710A9BFE203CE86F0090D532 /* LaunchScreen.storyboard */,
+				710A9C08203CE8E60090D532 /* Controllers */,
+				710A9C09203CE8F00090D532 /* UI */,
 				710A9C01203CE86F0090D532 /* Info.plist */,
 			);
 			path = Cocktailist;
+			sourceTree = "<group>";
+		};
+		710A9C07203CE8B60090D532 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				710A9BF9203CE86F0090D532 /* Main.storyboard */,
+				710A9BFE203CE86F0090D532 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		710A9C08203CE8E60090D532 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				710A9BF7203CE86F0090D532 /* ListController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		710A9C09203CE8F00090D532 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				710A9C07203CE8B60090D532 /* Storyboards */,
+				710A9BFC203CE86F0090D532 /* Assets.xcassets */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,7 +160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				710A9BF8203CE86F0090D532 /* ViewController.swift in Sources */,
+				710A9BF8203CE86F0090D532 /* ListController.swift in Sources */,
 				710A9BF6203CE86F0090D532 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
