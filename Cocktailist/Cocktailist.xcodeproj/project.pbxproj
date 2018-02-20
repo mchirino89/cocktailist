@@ -55,9 +55,9 @@
 			isa = PBXGroup;
 			children = (
 				710A9BF5203CE86F0090D532 /* AppDelegate.swift */,
+				710A9C01203CE86F0090D532 /* Info.plist */,
 				710A9C08203CE8E60090D532 /* Controllers */,
 				710A9C09203CE8F00090D532 /* UI */,
-				710A9C01203CE86F0090D532 /* Info.plist */,
 			);
 			path = Cocktailist;
 			sourceTree = "<group>";
@@ -305,7 +305,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "-codegeeks.Cocktailist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -320,7 +320,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "-codegeeks.Cocktailist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
