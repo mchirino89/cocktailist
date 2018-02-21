@@ -12,5 +12,10 @@ class CocktailCellTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var legendTextView: UITextView!
     @IBOutlet weak var thumbnailImageView: UIImageView!
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, UIEdgeInsetsMake(0, 16, 8, 16))
+    }
     
 }

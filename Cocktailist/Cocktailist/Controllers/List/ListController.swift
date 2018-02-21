@@ -25,7 +25,7 @@ extension ListController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 5
     }
 }
 
@@ -37,6 +37,7 @@ extension ListController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cocktailCell") as! CocktailCellTableViewCell
+        cell.backgroundColor = UIColor.clear
         return cell
     }
 }
