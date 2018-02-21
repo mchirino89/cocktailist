@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,7 +26,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CgY-xY-Snd">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cocktailCell" rowHeight="120" id="YGo-1T-oBd" customClass="CocktailCellTableViewCell" customModule="Cocktailist" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="120"/>
@@ -36,47 +35,53 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Hso-64-bD1" userLabel="Text Stack View">
-                                                    <rect key="frame" x="0.0" y="0.0" width="250" height="125"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p43-MD-QDx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Apple grand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNW-5g-uQ4">
-                                                            <rect key="frame" x="0.0" y="0.0" width="250" height="24"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <textView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePd-vQ-kW3">
-                                                            <rect key="frame" x="0.0" y="32" width="250" height="93"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
-                                                            <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
-                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                                        </textView>
-                                                    </subviews>
-                                                </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="T5k-ZX-Ia6" userLabel="Image Stack View">
-                                                    <rect key="frame" x="250" y="0.0" width="125" height="125"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cocktailPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="NRO-7P-RBM">
-                                                            <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Hso-64-bD1" userLabel="Text Stack View">
+                                                            <rect key="frame" x="8" y="8" width="255" height="104"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Apple grand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNW-5g-uQ4">
+                                                                    <rect key="frame" x="8" y="8" width="239" height="24"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <textView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePd-vQ-kW3">
+                                                                    <rect key="frame" x="8" y="40" width="239" height="56"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
+                                                                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
+                                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                                </textView>
+                                                            </subviews>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" secondItem="NRO-7P-RBM" secondAttribute="height" multiplier="1:1" id="A7h-Di-S62"/>
+                                                                <constraint firstItem="ePd-vQ-kW3" firstAttribute="top" secondItem="XNW-5g-uQ4" secondAttribute="bottom" constant="8" symbolic="YES" id="DmZ-PR-byA"/>
                                                             </constraints>
-                                                        </imageView>
+                                                            <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="T5k-ZX-Ia6" userLabel="Image Stack View">
+                                                            <rect key="frame" x="263" y="8" width="104" height="104"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cocktailPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="NRO-7P-RBM">
+                                                                    <rect key="frame" x="8" y="8" width="88" height="88"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="NRO-7P-RBM" secondAttribute="height" multiplier="1:1" id="A7h-Di-S62"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
+                                                        </stackView>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="NRO-7P-RBM" firstAttribute="height" secondItem="T5k-ZX-Ia6" secondAttribute="height" id="jhr-Mr-IHK"/>
-                                                    </constraints>
+                                                    <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
                                                 </stackView>
                                             </subviews>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstItem="Hso-64-bD1" firstAttribute="leading" secondItem="Wzj-F4-ueU" secondAttribute="leading" id="3Xc-IZ-MpD"/>
-                                                <constraint firstAttribute="trailing" secondItem="T5k-ZX-Ia6" secondAttribute="trailing" id="8hS-gx-AKv"/>
-                                                <constraint firstItem="T5k-ZX-Ia6" firstAttribute="top" secondItem="Wzj-F4-ueU" secondAttribute="top" id="HNJ-rV-3gG"/>
-                                                <constraint firstItem="Hso-64-bD1" firstAttribute="width" secondItem="Wzj-F4-ueU" secondAttribute="width" multiplier="2/3" id="Pb3-9j-oix"/>
-                                                <constraint firstItem="T5k-ZX-Ia6" firstAttribute="leading" secondItem="Hso-64-bD1" secondAttribute="trailing" id="ZEW-Xr-bSl"/>
-                                                <constraint firstItem="T5k-ZX-Ia6" firstAttribute="height" secondItem="Hso-64-bD1" secondAttribute="height" id="gLX-Qy-rrZ"/>
-                                                <constraint firstItem="Hso-64-bD1" firstAttribute="top" secondItem="Wzj-F4-ueU" secondAttribute="top" id="l7d-So-IiG"/>
+                                                <constraint firstItem="p43-MD-QDx" firstAttribute="top" secondItem="Wzj-F4-ueU" secondAttribute="top" id="2MT-ze-JaK"/>
+                                                <constraint firstItem="p43-MD-QDx" firstAttribute="width" secondItem="Wzj-F4-ueU" secondAttribute="width" id="mQ4-PA-kgu"/>
+                                                <constraint firstItem="p43-MD-QDx" firstAttribute="leading" secondItem="Wzj-F4-ueU" secondAttribute="leading" id="qwW-JG-1Qd"/>
+                                                <constraint firstItem="p43-MD-QDx" firstAttribute="height" secondItem="Wzj-F4-ueU" secondAttribute="height" id="uQU-nY-cqA"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -92,7 +97,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="CgY-xY-Snd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ClG-n7-9Sw"/>
