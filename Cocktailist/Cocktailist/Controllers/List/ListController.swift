@@ -13,8 +13,17 @@ class ListController: UIViewController {
     @IBOutlet weak var cocktailTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        clearNavigationBar()
+        polishCells()
+    }
+    
+    private func clearNavigationBar() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    private func polishCells() {
+        cocktailTableView.separatorStyle = .none
     }
 
 }

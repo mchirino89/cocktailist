@@ -15,9 +15,13 @@ class CocktailCellTableViewCell: UITableViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        definePadding()
+        defineShadow()
+    }
+    
+    private func definePadding() {
         typealias padding = Design.paddingCell
         contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, UIEdgeInsetsMake(padding.top.rawValue, padding.laterals.rawValue, padding.bottom.rawValue, padding.laterals.rawValue))
-        defineShadow()
     }
     
     private func defineShadow() {
