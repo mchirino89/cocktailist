@@ -15,14 +15,16 @@ class CocktailCellTableViewCell: UITableViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, UIEdgeInsetsMake(0, 16, 8, 16))
+        typealias padding = Design.paddingCell
+        contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, UIEdgeInsetsMake(padding.top.rawValue, padding.laterals.rawValue, padding.bottom.rawValue, padding.laterals.rawValue))
         defineShadow()
     }
     
     private func defineShadow() {
-        contentView.layer.shadowColor = UIColor.black.cgColor
-        contentView.layer.shadowRadius = 2
-        contentView.layer.shadowOpacity = 0.25
-        contentView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        typealias shadow = Design.shadow
+        contentView.layer.shadowColor = shadow.color
+        contentView.layer.shadowRadius = shadow.radius
+        contentView.layer.shadowOpacity = shadow.opacity
+        contentView.layer.shadowOffset = shadow.offset
     }
 }

@@ -21,7 +21,7 @@ class ListController: UIViewController {
 
 extension ListController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return Constants.units.tableSections
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,11 +32,12 @@ extension ListController: UITableViewDataSource {
 extension ListController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return Constants.cell.height
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cocktailCell") as! CocktailCellTableViewCell
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cell.name) as! CocktailCellTableViewCell
         cell.backgroundColor = UIColor.clear
         return cell
     }
