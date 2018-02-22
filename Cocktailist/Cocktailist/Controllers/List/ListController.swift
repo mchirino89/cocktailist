@@ -24,6 +24,7 @@ class ListController: UIViewController {
     
     private func polishCells() {
         cocktailTableView.separatorStyle = .none
+        
     }
 
 }
@@ -34,7 +35,7 @@ extension ListController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 15
     }
 }
 
@@ -45,9 +46,18 @@ extension ListController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cell.name) as! CocktailCellTableViewCell
         cell.backgroundColor = UIColor.clear
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: Constants.UI.detailsSegue, sender: indexPath.row)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let detailView = segue.destination as? DetailController, let cocktailId = sender as? Int else { return }
+        detailView.cocktailId = cocktailId
+    }
+    
 }

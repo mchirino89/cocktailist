@@ -47,7 +47,7 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <textView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePd-vQ-kW3">
+                                                                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePd-vQ-kW3">
                                                                     <rect key="frame" x="8" y="40" width="239" height="56"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
@@ -127,17 +127,17 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cocktailTableView" destination="CgY-xY-Snd" id="RZ2-49-d4V"/>
-                        <segue destination="nHT-ud-1hq" kind="show" identifier="cocktailDetailSegue" id="EWg-7r-9OA"/>
+                        <segue destination="nHT-ud-1hq" kind="show" identifier="cocktailDetailSegue" id="5wY-va-hla"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="687" y="375"/>
+            <point key="canvasLocation" x="722" y="375"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail Controller-->
         <scene sceneID="Kjs-n8-tpj">
             <objects>
-                <viewController id="nHT-ud-1hq" sceneMemberID="viewController">
+                <viewController id="nHT-ud-1hq" customClass="DetailController" customModule="Cocktailist" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JUR-fe-MBA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -147,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sfo-rf-EsG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1550" y="375"/>
+            <point key="canvasLocation" x="1570" y="375"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nU5-qD-5iT">
