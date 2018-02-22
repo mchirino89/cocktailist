@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailController: UIViewController {    
+class DetailController: UIViewController {
     
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var drinkImageView: UIImageView!
@@ -17,7 +17,15 @@ class DetailController: UIViewController {
     var cocktailId = 0
     
     override func viewDidLoad() {
-        
+        defineShadow()
+    }
+    
+    private func defineShadow() {
+        typealias shadow = Design.shadow
+        backgroundView.layer.shadowColor = shadow.color
+        backgroundView.layer.shadowRadius = shadow.radius
+        backgroundView.layer.shadowOpacity = shadow.opacity
+        backgroundView.layer.shadowOffset = shadow.offset
     }
     
 }
