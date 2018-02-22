@@ -140,28 +140,28 @@
         <scene sceneID="Kjs-n8-tpj">
             <objects>
                 <viewController id="nHT-ud-1hq" customClass="DetailController" customModule="Cocktailist" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="JUR-fe-MBA">
+                    <view key="view" contentMode="scaleToFill" id="JUR-fe-MBA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SGH-Oe-ebs" userLabel="background View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SGH-Oe-ebs" userLabel="background View">
                                 <rect key="frame" x="15.5" y="64" width="343" height="555"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="vVx-WY-5IX">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="555"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="vVx-WY-5IX">
+                                        <rect key="frame" x="16" y="16" width="311" height="523"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mEB-0Q-Lu3" userLabel="drink Image View">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="266"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cocktailPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="mEB-0Q-Lu3" userLabel="drink Image View">
+                                                <rect key="frame" x="0.0" y="0.0" width="311" height="255.5"/>
                                             </imageView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="P1Y-2S-HcD" userLabel="ingredients Text View">
-                                                <rect key="frame" x="0.0" y="266" width="343" height="144.5"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1Y-2S-HcD" userLabel="ingredients Text View">
+                                                <rect key="frame" x="0.0" y="255.5" width="311" height="134"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9DE-KN-luL" userLabel="preparation Text View">
-                                                <rect key="frame" x="0.0" y="410.5" width="343" height="144.5"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9DE-KN-luL" userLabel="preparation Text View">
+                                                <rect key="frame" x="0.0" y="389.5" width="311" height="133.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -169,7 +169,6 @@
                                             </textView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="P1Y-2S-HcD" firstAttribute="height" secondItem="vVx-WY-5IX" secondAttribute="height" multiplier="0.26" id="Ew8-S5-wWg"/>
                                             <constraint firstItem="9DE-KN-luL" firstAttribute="height" secondItem="P1Y-2S-HcD" secondAttribute="height" id="hW4-e5-8GF"/>
                                         </constraints>
                                     </stackView>
@@ -177,10 +176,16 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="vVx-WY-5IX" firstAttribute="centerX" secondItem="SGH-Oe-ebs" secondAttribute="centerX" id="KNa-RM-6gD"/>
-                                    <constraint firstItem="vVx-WY-5IX" firstAttribute="height" secondItem="SGH-Oe-ebs" secondAttribute="height" id="Lmv-0C-VKF"/>
+                                    <constraint firstItem="vVx-WY-5IX" firstAttribute="height" secondItem="SGH-Oe-ebs" secondAttribute="height" constant="-32" id="Lmv-0C-VKF"/>
                                     <constraint firstItem="vVx-WY-5IX" firstAttribute="centerY" secondItem="SGH-Oe-ebs" secondAttribute="centerY" id="Tid-LO-hwi"/>
-                                    <constraint firstItem="vVx-WY-5IX" firstAttribute="width" secondItem="SGH-Oe-ebs" secondAttribute="width" id="fga-h4-cg4"/>
+                                    <constraint firstItem="vVx-WY-5IX" firstAttribute="width" secondItem="SGH-Oe-ebs" secondAttribute="width" constant="-32" id="fga-h4-cg4"/>
+                                    <constraint firstItem="mEB-0Q-Lu3" firstAttribute="height" secondItem="SGH-Oe-ebs" secondAttribute="height" multiplier="0.46" id="ytV-Bt-Ir6"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
