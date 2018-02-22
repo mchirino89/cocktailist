@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -41,22 +42,23 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Hso-64-bD1" userLabel="Text Stack View">
                                                             <rect key="frame" x="8" y="8" width="255" height="104"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Apple grand" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNW-5g-uQ4">
-                                                                    <rect key="frame" x="8" y="8" width="239" height="24"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Apple grand" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XNW-5g-uQ4">
+                                                                    <rect key="frame" x="8" y="8" width="239" height="17.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePd-vQ-kW3">
-                                                                    <rect key="frame" x="8" y="40" width="239" height="56"/>
+                                                                    <rect key="frame" x="8" y="33.5" width="239" height="62.5"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
-                                                                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
+                                                                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                 </textView>
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="ePd-vQ-kW3" firstAttribute="top" secondItem="XNW-5g-uQ4" secondAttribute="bottom" constant="8" symbolic="YES" id="DmZ-PR-byA"/>
+                                                                <constraint firstItem="ePd-vQ-kW3" firstAttribute="height" secondItem="Hso-64-bD1" secondAttribute="height" multiplier="0.6" id="hhz-pJ-Sh1"/>
                                                             </constraints>
                                                             <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
                                                         </stackView>
@@ -138,12 +140,64 @@
         <scene sceneID="Kjs-n8-tpj">
             <objects>
                 <viewController id="nHT-ud-1hq" customClass="DetailController" customModule="Cocktailist" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JUR-fe-MBA">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="JUR-fe-MBA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SGH-Oe-ebs" userLabel="background View">
+                                <rect key="frame" x="15.5" y="64" width="343" height="555"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="vVx-WY-5IX">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="555"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mEB-0Q-Lu3" userLabel="drink Image View">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="266"/>
+                                            </imageView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="P1Y-2S-HcD" userLabel="ingredients Text View">
+                                                <rect key="frame" x="0.0" y="266" width="343" height="144.5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9DE-KN-luL" userLabel="preparation Text View">
+                                                <rect key="frame" x="0.0" y="410.5" width="343" height="144.5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="P1Y-2S-HcD" firstAttribute="height" secondItem="vVx-WY-5IX" secondAttribute="height" multiplier="0.26" id="Ew8-S5-wWg"/>
+                                            <constraint firstItem="9DE-KN-luL" firstAttribute="height" secondItem="P1Y-2S-HcD" secondAttribute="height" id="hW4-e5-8GF"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="vVx-WY-5IX" firstAttribute="centerX" secondItem="SGH-Oe-ebs" secondAttribute="centerX" id="KNa-RM-6gD"/>
+                                    <constraint firstItem="vVx-WY-5IX" firstAttribute="height" secondItem="SGH-Oe-ebs" secondAttribute="height" id="Lmv-0C-VKF"/>
+                                    <constraint firstItem="vVx-WY-5IX" firstAttribute="centerY" secondItem="SGH-Oe-ebs" secondAttribute="centerY" id="Tid-LO-hwi"/>
+                                    <constraint firstItem="vVx-WY-5IX" firstAttribute="width" secondItem="SGH-Oe-ebs" secondAttribute="width" id="fga-h4-cg4"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="SGH-Oe-ebs" firstAttribute="top" secondItem="4iT-hI-Viv" secondAttribute="top" id="DAd-84-zJk"/>
+                            <constraint firstItem="SGH-Oe-ebs" firstAttribute="width" secondItem="JUR-fe-MBA" secondAttribute="width" constant="-32" id="Gum-k5-hqi"/>
+                            <constraint firstItem="SGH-Oe-ebs" firstAttribute="centerX" secondItem="4iT-hI-Viv" secondAttribute="centerX" id="UGw-kB-rVK"/>
+                            <constraint firstItem="4iT-hI-Viv" firstAttribute="bottom" secondItem="SGH-Oe-ebs" secondAttribute="bottom" constant="48" id="o0E-PJ-OxL"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="4iT-hI-Viv"/>
                     </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="SGH-Oe-ebs" id="xyd-Kr-Mgx"/>
+                        <outlet property="drinkImageView" destination="mEB-0Q-Lu3" id="Q0K-ER-kcm"/>
+                        <outlet property="ingredientsTextView" destination="P1Y-2S-HcD" id="vgM-JK-ICe"/>
+                        <outlet property="preparationTextView" destination="9DE-KN-luL" id="HBI-ew-AWO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sfo-rf-EsG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -157,6 +211,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="N50-8v-pdq">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -8,12 +8,16 @@
 
 import UIKit
 
-class DetailController: UIViewController {
+class DetailController: UIViewController {    
     
+    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var drinkImageView: UIImageView!
+    @IBOutlet weak var ingredientsTextView: UITextView!
+    @IBOutlet weak var preparationTextView: UITextView!
     var cocktailId = 0
     
-    override func viewDidAppear(_ animated: Bool) {
-        print("Selected cocktail: \(cocktailId)")
+    override func viewDidLoad() {
+        
     }
     
 }
