@@ -11,8 +11,12 @@ import UIKit
 class ListController: UIViewController {
 
     @IBOutlet weak var cocktailTableView: UITableView!
+    private var drinkList: DrinkList?
+    private let decoder = JSONDecoder()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        readJSONList()
         clearNavigationBar()
         polishCells()
     }
@@ -24,7 +28,20 @@ class ListController: UIViewController {
     
     private func polishCells() {
         cocktailTableView.separatorStyle = .none
-        
+    }
+    
+    private func readJSONList() {
+        do {
+            guard let file = Bundle.main.url(forResource: Constants.json.file, withExtension: Constants.json.type) else {
+                print("No json file found")
+                return
+            }
+            let data = try Data(contentsOf: file)
+            drinkList = try decoder.decode(DrinkList.self, from: data)
+//            print(drinkList)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 
 }
@@ -35,7 +52,8 @@ extension ListController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        guard let drinks = drinkList?.drinks else { return 0 }
+        return drinks.count
     }
 }
 

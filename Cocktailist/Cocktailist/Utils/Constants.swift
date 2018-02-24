@@ -11,6 +11,11 @@ import UIKit
 
 struct Constants {
     
+    struct json {
+        static let file = "cocktailList"
+        static let type = "json"
+    }
+    
     struct UI {
         static let detailsSegue = "cocktailDetailSegue"
     }
