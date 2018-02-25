@@ -13,6 +13,8 @@ class ListController: UIViewController {
     @IBOutlet weak var cocktailTableView: UITableView!
     private var drinkList: DrinkList?
     private let decoder = JSONDecoder()
+    fileprivate let imageLoadQueue = OperationQueue()
+    fileprivate var imageLoadOperations = [IndexPath: ImageLoadOperation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +66,25 @@ extension ListController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cell.name) as! CocktailTableViewCell
+        
+//        typealias indexedDrink = drinkList?.drinks[indexPath.row]
+        
         cell.setDrink(cellDrink: drinkList!.drinks[indexPath.row])
+        if let imageLoadOperation = imageLoadOperations[indexPath],
+            let image = imageLoadOperation.image {
+            cell.thumbnailImageView.setImage(image)
+        } else {
+            let imageLoadOperation = ImageLoadOperation(url: drinkList!.drinks[indexPath.row].image)
+            imageLoadOperation.completionHandler = { [weak self] (image) in
+                guard let strongSelf = self else {
+                    return
+                }
+                cell.thumbnailImageView.setImage(image)
+                strongSelf.imageLoadOperations.removeValue(forKey: indexPath)
+            }
+            imageLoadQueue.addOperation(imageLoadOperation)
+            imageLoadOperations[indexPath] = imageLoadOperation
+        }
         return cell
     }
     
