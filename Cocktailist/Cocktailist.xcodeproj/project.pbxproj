@@ -16,7 +16,6 @@
 		714196542040FB510036F4B6 /* cocktailList.json in Resources */ = {isa = PBXBuildFile; fileRef = 714196532040FB510036F4B6 /* cocktailList.json */; };
 		714196572040FC540036F4B6 /* DrinkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714196562040FC540036F4B6 /* DrinkList.swift */; };
 		714196592040FD200036F4B6 /* DrinkDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714196582040FD200036F4B6 /* DrinkDetails.swift */; };
-		7141965B204101860036F4B6 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7141965A204101860036F4B6 /* Drink.swift */; };
 		7171FB04203E51A700874C38 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7171FB03203E51A700874C38 /* DetailController.swift */; };
 		71823D2F203E4B5B001C2447 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71823D2E203E4B5B001C2447 /* Constants.swift */; };
 /* End PBXBuildFile section */
@@ -33,7 +32,6 @@
 		714196532040FB510036F4B6 /* cocktailList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cocktailList.json; sourceTree = "<group>"; };
 		714196562040FC540036F4B6 /* DrinkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkList.swift; sourceTree = "<group>"; };
 		714196582040FD200036F4B6 /* DrinkDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetails.swift; sourceTree = "<group>"; };
-		7141965A204101860036F4B6 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		7171FB03203E51A700874C38 /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		71823D2E203E4B5B001C2447 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,7 +117,6 @@
 			children = (
 				714196562040FC540036F4B6 /* DrinkList.swift */,
 				714196582040FD200036F4B6 /* DrinkDetails.swift */,
-				7141965A204101860036F4B6 /* Drink.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -220,7 +217,6 @@
 				7171FB04203E51A700874C38 /* DetailController.swift in Sources */,
 				714196572040FC540036F4B6 /* DrinkList.swift in Sources */,
 				71823D2F203E4B5B001C2447 /* Constants.swift in Sources */,
-				7141965B204101860036F4B6 /* Drink.swift in Sources */,
 				714196592040FD200036F4B6 /* DrinkDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

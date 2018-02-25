@@ -38,7 +38,6 @@ class ListController: UIViewController {
             }
             let data = try Data(contentsOf: file)
             drinkList = try decoder.decode(DrinkList.self, from: data)
-//            print(drinkList)
         } catch {
             print(error.localizedDescription)
         }
@@ -65,6 +64,7 @@ extension ListController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cell.name) as! CocktailCellTableViewCell
+        
         cell.backgroundColor = UIColor.clear
         return cell
     }

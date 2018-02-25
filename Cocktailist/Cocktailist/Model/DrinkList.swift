@@ -1,5 +1,5 @@
 //
-//  Drink.swift
+//  DrinkList.swift
 //  Cocktailist
 //
 //  Created by Mauricio Chirino on 23/2/18.
@@ -10,20 +10,18 @@ import Foundation
 
 struct DrinkList: Decodable {
     let drinks: [Drink]
+}
+
+struct Drink: Decodable {
+    
+    let name: String
+    let image: URL
+    let id: String
     
     enum CodingKeys: String, CodingKey {
-        case drinks
+        case name = "strDrink"
+        case image = "strDrinkThumb"
+        case id = "idDrink"
     }
     
 }
-
-extension DrinkList {
-    
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        let drinks = try container.decode([Drink].self, forKey: .drinks)
-        self.init(drinks: drinks)
-    }
-    
-}
-
