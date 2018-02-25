@@ -63,9 +63,8 @@ extension ListController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cell.name) as! CocktailCellTableViewCell
-        
-        cell.backgroundColor = UIColor.clear
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cell.name) as! CocktailTableViewCell
+        cell.setDrink(cellDrink: drinkList!.drinks[indexPath.row])
         return cell
     }
     

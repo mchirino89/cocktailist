@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CocktailCellTableViewCell: UITableViewCell {
+class CocktailTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var legendTextView: UITextView!
     @IBOutlet weak var thumbnailImageView: UIImageView!
@@ -19,8 +19,14 @@ class CocktailCellTableViewCell: UITableViewCell {
         defineShadow()
     }
     
+    func setDrink(cellDrink: Drink) {
+        titleLabel.text = cellDrink.name
+//        legendTextView.text = cellDrink.
+    }
+    
     private func definePadding() {
         contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, addPadding(top: .none, left: .medium, bottom: .minimum, right: .medium))
+        
     }
     
     private func defineShadow() {
@@ -29,5 +35,6 @@ class CocktailCellTableViewCell: UITableViewCell {
         contentView.layer.shadowRadius = shadow.radius
         contentView.layer.shadowOpacity = shadow.opacity
         contentView.layer.shadowOffset = shadow.offset
+        backgroundColor = UIColor.clear
     }
 }
