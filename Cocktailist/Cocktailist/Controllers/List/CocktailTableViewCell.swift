@@ -12,7 +12,8 @@ class CocktailTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var legendTextView: UITextView!
     @IBOutlet weak var thumbnailImageView: UIImageView!
-
+    @IBOutlet weak var imageLoadActivityIndicator: UIActivityIndicatorView!
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         definePadding()

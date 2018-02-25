@@ -65,18 +65,28 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="T5k-ZX-Ia6" userLabel="Image Stack View">
                                                             <rect key="frame" x="263" y="8" width="104" height="104"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cocktailPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="NRO-7P-RBM">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VdH-tl-6AQ">
                                                                     <rect key="frame" x="8" y="8" width="88" height="88"/>
+                                                                    <subviews>
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cocktailPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="97f-a6-kHj">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="88" height="88"/>
+                                                                        </imageView>
+                                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Nam-0M-fE3">
+                                                                            <rect key="frame" x="26" y="26" width="37" height="37"/>
+                                                                            <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </activityIndicatorView>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" secondItem="NRO-7P-RBM" secondAttribute="height" multiplier="1:1" id="A7h-Di-S62"/>
+                                                                        <constraint firstItem="97f-a6-kHj" firstAttribute="width" secondItem="VdH-tl-6AQ" secondAttribute="width" id="CrD-tR-74d"/>
+                                                                        <constraint firstItem="97f-a6-kHj" firstAttribute="centerY" secondItem="VdH-tl-6AQ" secondAttribute="centerY" id="DXQ-X4-NDt"/>
+                                                                        <constraint firstItem="Nam-0M-fE3" firstAttribute="centerY" secondItem="VdH-tl-6AQ" secondAttribute="centerY" id="EXh-pf-UPZ"/>
+                                                                        <constraint firstItem="97f-a6-kHj" firstAttribute="centerX" secondItem="VdH-tl-6AQ" secondAttribute="centerX" id="oLn-yJ-o42"/>
+                                                                        <constraint firstItem="Nam-0M-fE3" firstAttribute="centerX" secondItem="VdH-tl-6AQ" secondAttribute="centerX" id="tGn-aJ-g4V"/>
+                                                                        <constraint firstItem="97f-a6-kHj" firstAttribute="height" secondItem="VdH-tl-6AQ" secondAttribute="height" id="v41-Jo-EcJ"/>
+                                                                        <constraint firstAttribute="width" secondItem="VdH-tl-6AQ" secondAttribute="height" multiplier="1:1" id="zHc-AA-kco"/>
                                                                     </constraints>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                            <integer key="value" value="4"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBound" value="YES"/>
-                                                                    </userDefinedRuntimeAttributes>
-                                                                </imageView>
+                                                                </view>
                                                             </subviews>
                                                             <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
                                                         </stackView>
@@ -100,8 +110,9 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
+                                            <outlet property="imageLoadActivityIndicator" destination="Nam-0M-fE3" id="Rnp-rX-x0t"/>
                                             <outlet property="legendTextView" destination="ePd-vQ-kW3" id="XWu-eJ-2WZ"/>
-                                            <outlet property="thumbnailImageView" destination="NRO-7P-RBM" id="xQR-rE-GAM"/>
+                                            <outlet property="thumbnailImageView" destination="97f-a6-kHj" id="hwd-BC-ECQ"/>
                                             <outlet property="titleLabel" destination="XNW-5g-uQ4" id="WqL-40-qrQ"/>
                                         </connections>
                                     </tableViewCell>
