@@ -13,7 +13,6 @@ class CocktailTableViewCell: UITableViewCell {
     @IBOutlet weak var legendTextView: UITextView!
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var imageLoadActivityIndicator: UIActivityIndicatorView!
-    private var imageURL = ""
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -23,7 +22,14 @@ class CocktailTableViewCell: UITableViewCell {
     
     func setDrink(cellDrink: Drink) {
         titleLabel.text = cellDrink.name
-        imageURL = cellDrink.image.absoluteString
+        thumbnailImageView.image = #imageLiteral(resourceName: "cocktailPlaceholder")
+        imageLoadActivityIndicator.startAnimating()
+    }
+    
+    func loadFinished() {
+        DispatchQueue.main.async { [unowned self]  in
+            self.imageLoadActivityIndicator.stopAnimating()
+        }
     }
     
     private func definePadding() {
@@ -37,11 +43,5 @@ class CocktailTableViewCell: UITableViewCell {
         contentView.layer.shadowOpacity = shadow.opacity
         contentView.layer.shadowOffset = shadow.offset
         backgroundColor = UIColor.clear
-    }
-}
-
-private extension CocktailTableViewCell {
-    func setOpaqueBackground() {
-        imageView?.image = #imageLiteral(resourceName: "cocktailPlaceholder")
     }
 }

@@ -8,12 +8,12 @@
 
 import UIKit
 
-typealias ImageLoadOperationCompletionHandlerType = ((UIImage) -> ())?
 
 class ImageLoadOperation: Operation {
-    var url: URL
+    typealias ImageLoadOperationCompletionHandlerType = ((UIImage) -> ())?
     var completionHandler: ImageLoadOperationCompletionHandlerType
     var image: UIImage?
+    var url: URL
     
     init(url: URL) {
         self.url = url
@@ -24,12 +24,8 @@ class ImageLoadOperation: Operation {
             return
         }
         
-        UIImage.downloadImageFromUrl(url) { [weak self] (image) in
-            guard let strongSelf = self,
-                !strongSelf.isCancelled,
-                let image = image else {
-                    return
-            }
+        UIImage.downloadImageFromUrl(url) { [weak self] (retrievedImage) in
+            guard let strongSelf = self, !strongSelf.isCancelled, let image = retrievedImage else { return }
             strongSelf.image = image
             strongSelf.completionHandler?(image)
         }
@@ -38,11 +34,9 @@ class ImageLoadOperation: Operation {
 
 extension UIImage {
     static func downloadImageFromUrl(_ url: URL, completionHandler: @escaping (UIImage?) -> Void) {
-        guard let fixedURL = URL(string: "http://\(url.absoluteURL)") else { return }
-        print(fixedURL)
-        let task: URLSessionDataTask = URLSession.shared.dataTask(with: fixedURL, completionHandler: { (data, response, error) -> Void in
+        let task: URLSessionDataTask = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) -> Void in
             guard let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let mimeType = response?.mimeType, mimeType.hasPrefix(Constants.network.imageMime),
                 let data = data, error == nil,
                 let image = UIImage(data: data) else {
                     completionHandler(nil)

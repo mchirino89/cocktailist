@@ -15,12 +15,44 @@ class ListController: UIViewController {
     private let decoder = JSONDecoder()
     fileprivate let imageLoadQueue = OperationQueue()
     fileprivate var imageLoadOperations = [IndexPath: ImageLoadOperation]()
+    private let cache = NSCache<NSString, UIImage>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         readJSONList()
         clearNavigationBar()
         polishCells()
+    }
+
+    fileprivate func getCachedDrinkImage(at key: NSString) -> UIImage? {
+        guard let cachedVersion = cache.object(forKey: key) else { return nil }
+        return cachedVersion
+    }
+    
+    fileprivate func setCachedDrinkImage(_ key: NSString, _ image: UIImage) {
+        cache.setObject(image, forKey: key)
+    }
+    
+    fileprivate func queueDrinkImage(for cell: CocktailTableViewCell, at index: IndexPath) {
+        let currentURL = drinkList!.drinks[index.row].image
+        guard let cachedImage = getCachedDrinkImage(at: currentURL.absoluteString as NSString) else {
+            if let imageLoadOperation = imageLoadOperations[index],
+                let image = imageLoadOperation.image {
+                cell.thumbnailImageView.setImage(image)
+            } else {
+                let imageLoadOperation = ImageLoadOperation(url: currentURL)
+                imageLoadOperation.completionHandler = { [unowned self] (image) in
+                    cell.thumbnailImageView.setImage(image)
+                    cell.loadFinished()
+                    self.cache.setObject(image, forKey: currentURL.absoluteString as NSString)
+                    self.imageLoadOperations.removeValue(forKey: index)
+                }
+                imageLoadQueue.addOperation(imageLoadOperation)
+                imageLoadOperations[index] = imageLoadOperation
+            }
+            return
+        }
+        cell.thumbnailImageView.setImage(cachedImage)
     }
     
     private func clearNavigationBar() {
@@ -66,25 +98,8 @@ extension ListController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cell.name) as! CocktailTableViewCell
-        
-//        typealias indexedDrink = drinkList?.drinks[indexPath.row]
-        
         cell.setDrink(cellDrink: drinkList!.drinks[indexPath.row])
-        if let imageLoadOperation = imageLoadOperations[indexPath],
-            let image = imageLoadOperation.image {
-            cell.thumbnailImageView.setImage(image)
-        } else {
-            let imageLoadOperation = ImageLoadOperation(url: drinkList!.drinks[indexPath.row].image)
-            imageLoadOperation.completionHandler = { [weak self] (image) in
-                guard let strongSelf = self else {
-                    return
-                }
-                cell.thumbnailImageView.setImage(image)
-                strongSelf.imageLoadOperations.removeValue(forKey: indexPath)
-            }
-            imageLoadQueue.addOperation(imageLoadOperation)
-            imageLoadOperations[indexPath] = imageLoadOperation
-        }
+        queueDrinkImage(for: cell, at: indexPath)
         return cell
     }
     

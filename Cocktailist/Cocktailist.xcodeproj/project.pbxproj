@@ -18,7 +18,7 @@
 		714196592040FD200036F4B6 /* DrinkDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714196582040FD200036F4B6 /* DrinkDetails.swift */; };
 		7171FB04203E51A700874C38 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7171FB03203E51A700874C38 /* DetailController.swift */; };
 		71823D2F203E4B5B001C2447 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71823D2E203E4B5B001C2447 /* Constants.swift */; };
-		71BF23222043644D00B77323 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF23212043644D00B77323 /* ImageDownloader.swift */; };
+		71BF23222043644D00B77323 /* ImageLoadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF23212043644D00B77323 /* ImageLoadOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +35,7 @@
 		714196582040FD200036F4B6 /* DrinkDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetails.swift; sourceTree = "<group>"; };
 		7171FB03203E51A700874C38 /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		71823D2E203E4B5B001C2447 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		71BF23212043644D00B77323 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		71BF23212043644D00B77323 /* ImageLoadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +136,7 @@
 			children = (
 				71823D2E203E4B5B001C2447 /* Constants.swift */,
 				714196532040FB510036F4B6 /* cocktailList.json */,
-				71BF23212043644D00B77323 /* ImageDownloader.swift */,
+				71BF23212043644D00B77323 /* ImageLoadOperation.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -216,7 +216,7 @@
 			files = (
 				710A9C0C203CF2BB0090D532 /* CocktailTableViewCell.swift in Sources */,
 				710A9BF8203CE86F0090D532 /* ListController.swift in Sources */,
-				71BF23222043644D00B77323 /* ImageDownloader.swift in Sources */,
+				71BF23222043644D00B77323 /* ImageLoadOperation.swift in Sources */,
 				710A9BF6203CE86F0090D532 /* AppDelegate.swift in Sources */,
 				7171FB04203E51A700874C38 /* DetailController.swift in Sources */,
 				714196572040FC540036F4B6 /* DrinkList.swift in Sources */,

@@ -16,6 +16,11 @@ struct Constants {
         static let type = "json"
     }
     
+    struct network {
+        static let http = "http://"
+        static let imageMime = "image"
+    }
+    
     struct UI {
         static let detailsSegue = "cocktailDetailSegue"
     }
