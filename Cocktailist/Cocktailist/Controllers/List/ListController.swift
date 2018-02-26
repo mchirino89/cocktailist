@@ -11,6 +11,8 @@ import UIKit
 class ListController: UIViewController {
 
     @IBOutlet weak var cocktailTableView: UITableView!
+    @IBOutlet weak var filterBarButton: UIBarButtonItem!
+    @IBOutlet weak var initLoadView: UIView!
     private var drinkList: DrinkList?
     private let decoder = JSONDecoder()
     fileprivate let imageLoadQueue = OperationQueue()
@@ -19,7 +21,8 @@ class ListController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        readJSONList()
+//        readJSONList()
+        getCocktailList()
         clearNavigationBar()
         polishCells()
     }
@@ -81,6 +84,30 @@ class ListController: UIViewController {
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+    private func getCocktailList() {
+        guard let rootURL = URL(string: Constants.network.rootURL) else { return }
+        URLSession.shared.dataTask(with: rootURL, completionHandler: { [unowned self] dataRetrieved, response, error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let data = dataRetrieved, let response = response as? HTTPURLResponse, response.statusCode == 200 {
+                do {
+                    self.drinkList = try self.decoder.decode(DrinkList.self, from: data)
+                    DispatchQueue.main.async {
+                        self.cocktailTableView.reloadData()
+                        self.cocktailTableView.reloadRows(at: self.cocktailTableView.indexPathsForVisibleRows!, with: .middle)
+                        UIView.animate(withDuration: Constants.animation.duration, animations: {
+                            self.initLoadView.alpha = Constants.animation.fadeOut
+                        }, completion: { _ in
+                            self.view.sendSubview(toBack: self.initLoadView)
+                        })
+                    }
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+        }).resume()
     }
 
 }

@@ -19,10 +19,16 @@ struct Constants {
     struct network {
         static let http = "http://"
         static let imageMime = "image"
+        static let rootURL = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass"
     }
     
     struct UI {
         static let detailsSegue = "cocktailDetailSegue"
+    }
+    
+    struct animation {
+        static let duration: TimeInterval = 0.3
+        static let fadeOut: CGFloat = 0
     }
     
     struct cell {

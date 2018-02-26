@@ -123,24 +123,43 @@
                                     <outlet property="prefetchDataSource" destination="01J-lp-oVM" id="FB8-V7-FcT"/>
                                 </connections>
                             </tableView>
+                            <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1A5-X2-CNJ">
+                                <rect key="frame" x="-0.5" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="xda-oE-RAe">
+                                        <rect key="frame" x="169.5" y="283" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="xda-oE-RAe" firstAttribute="centerX" secondItem="1A5-X2-CNJ" secondAttribute="centerX" id="8yH-1u-NLh"/>
+                                    <constraint firstItem="xda-oE-RAe" firstAttribute="centerY" secondItem="1A5-X2-CNJ" secondAttribute="centerY" id="sRR-Y6-w41"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="1A5-X2-CNJ" firstAttribute="height" secondItem="CgY-xY-Snd" secondAttribute="height" id="AFT-Gr-zpi"/>
+                            <constraint firstItem="1A5-X2-CNJ" firstAttribute="centerY" secondItem="CgY-xY-Snd" secondAttribute="centerY" id="CZs-1c-FEN"/>
                             <constraint firstItem="CgY-xY-Snd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ClG-n7-9Sw"/>
+                            <constraint firstItem="1A5-X2-CNJ" firstAttribute="centerX" secondItem="CgY-xY-Snd" secondAttribute="centerX" id="KN1-50-I5B"/>
                             <constraint firstItem="CgY-xY-Snd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Prt-Ip-kqt"/>
+                            <constraint firstItem="1A5-X2-CNJ" firstAttribute="width" secondItem="CgY-xY-Snd" secondAttribute="width" id="aMY-kK-7xV"/>
                             <constraint firstItem="CgY-xY-Snd" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="jqH-in-C8F"/>
                             <constraint firstItem="CgY-xY-Snd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uzX-RA-Ksa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Cocktail list" id="JLS-SE-JKN">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="fEw-Ho-ytj">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="search" id="fEw-Ho-ytj">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="cocktailTableView" destination="CgY-xY-Snd" id="RZ2-49-d4V"/>
+                        <outlet property="filterBarButton" destination="fEw-Ho-ytj" id="QC4-u9-ohC"/>
+                        <outlet property="initLoadView" destination="1A5-X2-CNJ" id="Qng-Mo-tNE"/>
                         <segue destination="nHT-ud-1hq" kind="show" identifier="cocktailDetailSegue" id="5wY-va-hla"/>
                     </connections>
                 </viewController>
