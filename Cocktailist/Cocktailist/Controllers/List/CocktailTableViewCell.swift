@@ -13,6 +13,7 @@ class CocktailTableViewCell: UITableViewCell {
     @IBOutlet weak var legendTextView: UITextView!
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var imageLoadActivityIndicator: UIActivityIndicatorView!
+    private(set) var drinkImageURL = ""
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -22,6 +23,7 @@ class CocktailTableViewCell: UITableViewCell {
     
     func setDrink(cellDrink: Drink) {
         titleLabel.text = cellDrink.name
+        drinkImageURL = cellDrink.image.absoluteString
         thumbnailImageView.image = #imageLiteral(resourceName: "cocktailPlaceholder")
         imageLoadActivityIndicator.startAnimating()
     }

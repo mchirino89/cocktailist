@@ -38,12 +38,11 @@ class ListController: UIViewController {
         guard let cachedImage = getCachedDrinkImage(at: currentURL.absoluteString as NSString) else {
             if let imageLoadOperation = imageLoadOperations[index],
                 let image = imageLoadOperation.image {
-                cell.thumbnailImageView.setImage(image)
+                setDrinkImage(cell, image, currentURL.absoluteString)
             } else {
                 let imageLoadOperation = ImageLoadOperation(url: currentURL)
                 imageLoadOperation.completionHandler = { [unowned self] (image) in
-                    cell.thumbnailImageView.setImage(image)
-                    cell.loadFinished()
+                    self.setDrinkImage(cell, image, currentURL.absoluteString)
                     self.cache.setObject(image, forKey: currentURL.absoluteString as NSString)
                     self.imageLoadOperations.removeValue(forKey: index)
                 }
@@ -52,7 +51,14 @@ class ListController: UIViewController {
             }
             return
         }
-        cell.thumbnailImageView.setImage(cachedImage)
+        setDrinkImage(cell, cachedImage, currentURL.absoluteString)
+    }
+    
+    private func setDrinkImage(_ cell: CocktailTableViewCell, _ image: UIImage, _ url: String) {
+        if cell.drinkImageURL == url {
+            cell.thumbnailImageView.setImage(image)
+            cell.loadFinished()
+        }
     }
     
     private func clearNavigationBar() {
