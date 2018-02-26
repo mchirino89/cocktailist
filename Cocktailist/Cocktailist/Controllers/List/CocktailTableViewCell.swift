@@ -21,7 +21,7 @@ class CocktailTableViewCell: UITableViewCell {
         defineShadow()
     }
     
-    func setDrink(cellDrink: Drink) {
+    func setDrink(cellDrink: Drink, index: IndexPath) {
         titleLabel.text = cellDrink.name
         drinkImageURL = cellDrink.image.absoluteString
         thumbnailImageView.image = #imageLiteral(resourceName: "cocktailPlaceholder")

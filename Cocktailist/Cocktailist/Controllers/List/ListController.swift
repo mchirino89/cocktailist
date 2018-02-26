@@ -104,7 +104,7 @@ extension ListController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cell.name) as! CocktailTableViewCell
-        cell.setDrink(cellDrink: drinkList!.drinks[indexPath.row])
+        cell.setDrink(cellDrink: drinkList!.drinks[indexPath.row], index: indexPath)
         queueDrinkImage(for: cell, at: indexPath)
         return cell
     }
@@ -113,9 +113,42 @@ extension ListController: UITableViewDelegate {
         performSegue(withIdentifier: Constants.UI.detailsSegue, sender: indexPath.row)
     }
     
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let imageLoadOperation = imageLoadOperations[indexPath] else {
+            return
+        }
+        imageLoadOperation.cancel()
+        imageLoadOperations.removeValue(forKey: indexPath)
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let detailView = segue.destination as? DetailController, let cocktailId = sender as? Int else { return }
         detailView.cocktailId = cocktailId
     }
     
 }
+
+extension ListController: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            if let _ = imageLoadOperations[indexPath] {
+                return
+            }
+            let imageLoadOperation = ImageLoadOperation(url: drinkList!.drinks[indexPath.row].image)
+            imageLoadQueue.addOperation(imageLoadOperation)
+            imageLoadOperations[indexPath] = imageLoadOperation
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            guard let imageLoadOperation = imageLoadOperations[indexPath] else {
+                return
+            }
+            imageLoadOperation.cancel()
+            imageLoadOperations.removeValue(forKey: indexPath)
+        }
+    }
+}
+

@@ -120,6 +120,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="01J-lp-oVM" id="D64-rj-o9U"/>
                                     <outlet property="delegate" destination="01J-lp-oVM" id="vNe-yL-q7V"/>
+                                    <outlet property="prefetchDataSource" destination="01J-lp-oVM" id="FB8-V7-FcT"/>
                                 </connections>
                             </tableView>
                         </subviews>
