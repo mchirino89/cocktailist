@@ -12,14 +12,20 @@ import UIKit
 struct Constants {
     
     struct json {
-        static let file = "cocktailList"
+        static let list = "cocktailList"
+        static let details = "cocktailDetails"
         static let type = "json"
     }
     
     struct network {
         static let http = "http://"
         static let imageMime = "image"
-        static let rootURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass"
+        
+        
+        struct URLs {
+            static let root = URL(string: "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass")!
+            static let cocktailURL = URL(string: "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=")!
+        }
     }
     
     struct UI {
