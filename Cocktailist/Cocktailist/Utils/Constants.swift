@@ -19,7 +19,7 @@ struct Constants {
     struct network {
         static let http = "http://"
         static let imageMime = "image"
-        static let rootURL = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass"
+        static let rootURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass"
     }
     
     struct UI {

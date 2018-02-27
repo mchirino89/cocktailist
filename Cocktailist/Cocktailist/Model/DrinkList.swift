@@ -25,13 +25,3 @@ struct Drink: Decodable {
     }
     
 }
-
-extension Drink {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        let nameDecoded = try container.decode(String.self, forKey: .name)
-        let imageDecoded = try container.decode(URL.self, forKey: .image)
-        let idDecoded = try container.decode(String.self, forKey: .id)
-        self.init(name: nameDecoded, image: URL(string: "\(Constants.network.http)\(imageDecoded)")!, id: idDecoded)
-    }
-}
