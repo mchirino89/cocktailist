@@ -28,6 +28,14 @@ struct Constants {
         }
     }
     
+    enum drinkInfo: String {
+        case title = "strDrink"
+        case ingredient = "strIngredient"
+        case measure = "strMeasure1"
+        case instructions = "strInstructions"
+        case image = "strDrinkThumb"
+    }
+    
     struct UI {
         static let detailsSegue = "cocktailDetailSegue"
     }

@@ -46,7 +46,14 @@ class DetailController: UIViewController {
     }
     
     private func setInterface(drinkData: [String: String?]) {
+        typealias info = Constants.drinkInfo
+        title = drinkData[info.title.rawValue] ?? "Drink \(cocktailId)"
+        print(drinkData[info.instructions.rawValue] ?? "no instructions")
+        print(drinkData[info.image.rawValue] ?? "no image")
         
+//        while <#condition#> {
+//            <#code#>
+//        }
     }
     
     private func getDrinkDetails() {
