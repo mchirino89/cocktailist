@@ -31,43 +31,41 @@ class DetailController: UIViewController {
     }
     
     private func readLocalFile(resource: String, type: String) {
+        let decoder = JSONDecoder()
         do {
             guard let file = Bundle.main.url(forResource: resource, withExtension: type) else {
                 print("No file found")
                 return
             }
             let data = try Data(contentsOf: file)
-            let decoded = self.asDictionary(payload: data)
-            print(decoded ?? "nothing")
+            let decoded = try decoder.decode(DrinkDetails.self, from: data)
+            setInterface(drinkData: decoded.drinks.first!)
         } catch {
             print(error.localizedDescription)
         }
     }
     
+    private func setInterface(drinkData: [String: String?]) {
+        
+    }
+    
     private func getDrinkDetails() {
-//        let decoder = JSONDecoder()
+        let decoder = JSONDecoder()
         currentTask = URLSession.shared.dataTask(with: Constants.network.URLs.cocktailURL.appendingPathComponent(cocktailId), completionHandler: { [unowned self] dataRetrieved, response, error in
             if let error = error {
                 print(error.localizedDescription)
             } else if let data = dataRetrieved, let response = response as? HTTPURLResponse, response.statusCode == 200 {
-                let decoded = self.asDictionary(payload: data)
-                print(decoded ?? "No data converted")
-                DispatchQueue.main.async {
-                    
+                do {
+                    let decoded = try decoder.decode(DrinkDetails.self, from: data)
+                    DispatchQueue.main.async {
+                        self.setInterface(drinkData: decoded.drinks.first!)
+                    }
+                } catch {
+                    print(error.localizedDescription)
                 }
             }
         })
         currentTask.resume()
-    }
-    
-    private func asDictionary(payload: Data) -> [[String: Any?]]? {
-        do {
-            let dictionary = try JSONSerialization.jsonObject(with: payload, options: .allowFragments) as? [[String: Any?]]
-            return dictionary
-        } catch {
-            print(error.localizedDescription)
-            return nil
-        }
     }
     
     private func defineShadow() {
