@@ -75,7 +75,7 @@ class ListController: UIViewController {
     
     private func readJSONList() {
         do {
-            guard let file = Bundle.main.url(forResource: Constants.json.file, withExtension: Constants.json.type) else {
+            guard let file = Bundle.main.url(forResource: Constants.json.list, withExtension: Constants.json.type) else {
                 print("No json file found")
                 return
             }
@@ -87,8 +87,7 @@ class ListController: UIViewController {
     }
     
     private func getCocktailList() {
-        guard let rootURL = URL(string: Constants.network.rootURL) else { return }
-        URLSession.shared.dataTask(with: rootURL, completionHandler: { [unowned self] dataRetrieved, response, error in
+        URLSession.shared.dataTask(with: Constants.network.URLs.root, completionHandler: { [unowned self] dataRetrieved, response, error in
             if let error = error {
                 print(error.localizedDescription)
             } else if let data = dataRetrieved, let response = response as? HTTPURLResponse, response.statusCode == 200 {
@@ -137,7 +136,8 @@ extension ListController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: Constants.UI.detailsSegue, sender: indexPath.row)
+        let infoTuple: (String, UIImage?) = (drinkList!.drinks[indexPath.row].id, cache.object(forKey: drinkList!.drinks[indexPath.row].image.absoluteString as NSString))
+        performSegue(withIdentifier: Constants.UI.detailsSegue, sender: infoTuple)
     }
     
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -150,8 +150,9 @@ extension ListController: UITableViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let detailView = segue.destination as? DetailController, let cocktailId = sender as? Int else { return }
-        detailView.cocktailId = cocktailId
+        guard let detailView = segue.destination as? DetailController, let cocktailInfo = sender as? (String, UIImage?) else { return }
+        detailView.cocktailId = cocktailInfo.0
+        detailView.cocktailImage = cocktailInfo.1
     }
     
 }
