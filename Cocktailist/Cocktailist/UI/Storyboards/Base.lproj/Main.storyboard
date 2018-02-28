@@ -137,7 +137,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.32549019610000002" green="0.73725490199999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1A5-X2-CNJ" firstAttribute="height" secondItem="CgY-xY-Snd" secondAttribute="height" id="AFT-Gr-zpi"/>
@@ -176,31 +176,76 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SGH-Oe-ebs" userLabel="background View">
-                                <rect key="frame" x="15.5" y="64" width="343" height="555"/>
+                                <rect key="frame" x="16" y="64" width="343" height="555"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vVx-WY-5IX">
                                         <rect key="frame" x="16" y="16" width="311" height="523"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cocktailPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="mEB-0Q-Lu3" userLabel="drink Image View">
-                                                <rect key="frame" x="0.0" y="0.0" width="311" height="255.5"/>
-                                            </imageView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1Y-2S-HcD" userLabel="ingredients Text View">
-                                                <rect key="frame" x="0.0" y="263.5" width="311" height="126"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UPb-QL-dW2">
+                                                <rect key="frame" x="0.0" y="0.0" width="311" height="410.5"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cocktailPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="mEB-0Q-Lu3" userLabel="drink Image View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="311" height="410.5"/>
+                                                    </imageView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igd-lu-tvu">
+                                                        <rect key="frame" x="-0.5" y="0.0" width="311" height="410.5"/>
+                                                        <subviews>
+                                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="R1O-dP-x5E">
+                                                                <rect key="frame" x="137" y="186.5" width="37" height="37"/>
+                                                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </activityIndicatorView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.59877996575342463" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="R1O-dP-x5E" firstAttribute="centerY" secondItem="igd-lu-tvu" secondAttribute="centerY" id="Kuj-lO-nfM"/>
+                                                            <constraint firstItem="R1O-dP-x5E" firstAttribute="centerX" secondItem="igd-lu-tvu" secondAttribute="centerX" id="TiQ-ka-04m"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <constraints>
+                                                    <constraint firstItem="igd-lu-tvu" firstAttribute="centerX" secondItem="mEB-0Q-Lu3" secondAttribute="centerX" id="LmW-1M-iRh"/>
+                                                    <constraint firstItem="mEB-0Q-Lu3" firstAttribute="centerY" secondItem="UPb-QL-dW2" secondAttribute="centerY" id="dEY-ii-pNT"/>
+                                                    <constraint firstItem="igd-lu-tvu" firstAttribute="height" secondItem="mEB-0Q-Lu3" secondAttribute="height" id="q4h-WJ-U8N"/>
+                                                    <constraint firstItem="igd-lu-tvu" firstAttribute="width" secondItem="mEB-0Q-Lu3" secondAttribute="width" id="r0T-YC-3sp"/>
+                                                    <constraint firstItem="mEB-0Q-Lu3" firstAttribute="width" secondItem="UPb-QL-dW2" secondAttribute="width" id="spo-YR-Jsv"/>
+                                                    <constraint firstItem="mEB-0Q-Lu3" firstAttribute="height" secondItem="UPb-QL-dW2" secondAttribute="height" id="tEz-Pc-nJ8"/>
+                                                    <constraint firstItem="mEB-0Q-Lu3" firstAttribute="centerX" secondItem="UPb-QL-dW2" secondAttribute="centerX" id="wBT-6F-TQF"/>
+                                                    <constraint firstItem="igd-lu-tvu" firstAttribute="centerY" secondItem="mEB-0Q-Lu3" secondAttribute="centerY" id="y8B-ce-TDP"/>
+                                                </constraints>
+                                            </view>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1Y-2S-HcD" userLabel="ingredients Text View">
+                                                <rect key="frame" x="0.0" y="418.5" width="311" height="48"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment>
+                                                        <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
+                                                        <attributes>
+                                                            <font key="NSFont" size="18" name=".SFNSText"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" lineHeightMultiple="1.5" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9DE-KN-luL" userLabel="preparation Text View">
-                                                <rect key="frame" x="0.0" y="397.5" width="311" height="125.5"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9DE-KN-luL" userLabel="preparation Text View">
+                                                <rect key="frame" x="0.0" y="474.5" width="311" height="48.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment>
+                                                        <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
+                                                        <attributes>
+                                                            <font key="NSFont" metaFont="system" size="18"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" lineHeightMultiple="1.5" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="9DE-KN-luL" firstAttribute="height" secondItem="P1Y-2S-HcD" secondAttribute="height" id="hW4-e5-8GF"/>
+                                            <constraint firstItem="UPb-QL-dW2" firstAttribute="height" secondItem="vVx-WY-5IX" secondAttribute="height" multiplier="0.46" id="vgR-bG-CNE"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -210,7 +255,6 @@
                                     <constraint firstItem="vVx-WY-5IX" firstAttribute="height" secondItem="SGH-Oe-ebs" secondAttribute="height" constant="-32" id="Lmv-0C-VKF"/>
                                     <constraint firstItem="vVx-WY-5IX" firstAttribute="centerY" secondItem="SGH-Oe-ebs" secondAttribute="centerY" id="Tid-LO-hwi"/>
                                     <constraint firstItem="vVx-WY-5IX" firstAttribute="width" secondItem="SGH-Oe-ebs" secondAttribute="width" constant="-32" id="fga-h4-cg4"/>
-                                    <constraint firstItem="mEB-0Q-Lu3" firstAttribute="height" secondItem="SGH-Oe-ebs" secondAttribute="height" multiplier="0.46" id="ytV-Bt-Ir6"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -218,19 +262,39 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JIn-m4-Z7T">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="HaC-Aw-bJf">
+                                        <rect key="frame" x="169" y="283" width="37" height="37"/>
+                                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.59877996580000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="HaC-Aw-bJf" firstAttribute="centerY" secondItem="JIn-m4-Z7T" secondAttribute="centerY" id="Prl-CW-zxp"/>
+                                    <constraint firstItem="HaC-Aw-bJf" firstAttribute="centerX" secondItem="JIn-m4-Z7T" secondAttribute="centerX" id="Udb-0c-8fE"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.32549019607843138" green="0.73725490196078436" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="JIn-m4-Z7T" firstAttribute="centerX" secondItem="4iT-hI-Viv" secondAttribute="centerX" id="A8E-0G-RDl"/>
                             <constraint firstItem="SGH-Oe-ebs" firstAttribute="top" secondItem="4iT-hI-Viv" secondAttribute="top" id="DAd-84-zJk"/>
+                            <constraint firstItem="JIn-m4-Z7T" firstAttribute="width" secondItem="JUR-fe-MBA" secondAttribute="width" id="Eoj-pE-7ah"/>
                             <constraint firstItem="SGH-Oe-ebs" firstAttribute="width" secondItem="JUR-fe-MBA" secondAttribute="width" constant="-32" id="Gum-k5-hqi"/>
                             <constraint firstItem="SGH-Oe-ebs" firstAttribute="centerX" secondItem="4iT-hI-Viv" secondAttribute="centerX" id="UGw-kB-rVK"/>
+                            <constraint firstItem="JIn-m4-Z7T" firstAttribute="top" secondItem="4iT-hI-Viv" secondAttribute="top" id="aR2-EU-IrR"/>
+                            <constraint firstItem="4iT-hI-Viv" firstAttribute="bottom" secondItem="JIn-m4-Z7T" secondAttribute="bottom" id="gyD-tZ-JHq"/>
                             <constraint firstItem="4iT-hI-Viv" firstAttribute="bottom" secondItem="SGH-Oe-ebs" secondAttribute="bottom" constant="48" id="o0E-PJ-OxL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4iT-hI-Viv"/>
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="SGH-Oe-ebs" id="xyd-Kr-Mgx"/>
+                        <outlet property="drinkImageLoadingView" destination="igd-lu-tvu" id="px7-8C-DRv"/>
                         <outlet property="drinkImageView" destination="mEB-0Q-Lu3" id="Q0K-ER-kcm"/>
+                        <outlet property="infoLoadingView" destination="JIn-m4-Z7T" id="8gb-4s-ozf"/>
                         <outlet property="ingredientsTextView" destination="P1Y-2S-HcD" id="vgM-JK-ICe"/>
                         <outlet property="preparationTextView" destination="9DE-KN-luL" id="HBI-ew-AWO"/>
                     </connections>
