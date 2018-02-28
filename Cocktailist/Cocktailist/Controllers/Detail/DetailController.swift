@@ -14,16 +14,23 @@ class DetailController: UIViewController {
     @IBOutlet weak var drinkImageView: UIImageView!
     @IBOutlet weak var ingredientsTextView: UITextView!
     @IBOutlet weak var preparationTextView: UITextView!
+    @IBOutlet weak var infoLoadingView: UIView!
+    @IBOutlet weak var drinkImageLoadingView: UIView!
+    
+    fileprivate let imageLoadQueue = OperationQueue()
     var cocktailId = ""
     var cocktailImage: UIImage? = nil
     var currentTask: URLSessionTask!
     
     override func viewDidLoad() {
+        defineShadow()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         drinkImageView.image = cocktailImage ?? #imageLiteral(resourceName: "cocktailPlaceholder")
         preparationTextView.text = Constants.UI.preparation
-        defineShadow()
-//        getDrinkDetails()
-        readLocalFile(resource: Constants.json.details, type: Constants.json.type)
+        getDrinkDetails()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -50,10 +57,13 @@ class DetailController: UIViewController {
         typealias info = Constants.drinkInfo
         var i = 1
         var measures = ""
+//        setImageDrink(imageURL: URL(string: drinkData[info.image.rawValue]!!)!)
         while i < Constants.units.ingredientsCount {
-            if let ingredientN = drinkData["\(info.ingredient.rawValue)\(i)"], !ingredientN!.isEmpty {
-                let measureN = drinkData["\(info.measure.rawValue)\(i)"] ?? ""
-                measures.append("\(measureN ?? "") - \(ingredientN ?? "")\n")
+            if let ingredientN = drinkData["\(info.ingredient.rawValue)\(i)"], ingredientN != nil {
+                if !ingredientN!.isEmpty {
+                    let measureN = drinkData["\(info.measure.rawValue)\(i)"] ?? ""
+                    measures.append("\(measureN ?? "") - \(ingredientN ?? "")\n")
+                }
             }
             i+=1
         }
@@ -61,12 +71,42 @@ class DetailController: UIViewController {
             self.title = drinkData[info.title.rawValue] ?? "Drink \(self.cocktailId)"
             self.ingredientsTextView.text = measures
             self.preparationTextView.text.append(drinkData[info.instructions.rawValue]! ?? "")
+            self.infoLoadingView.isHidden = true
+        }
+    }
+    
+    private func setImageDrink(imageURL: URL?) {
+        if drinkImageView.image == #imageLiteral(resourceName: "cocktailPlaceholder") {
+            guard let properURL = imageURL else {
+                drinkImageView.setImage(#imageLiteral(resourceName: "cocktailPlaceholder"))
+                hideLoadingViewForImage()
+                return
+            }
+            let imageLoadOperation = ImageLoadOperation(url: properURL)
+            imageLoadOperation.completionHandler = {  (image) in
+                self.drinkImageView.setImage(image)
+                self.hideLoadingViewForImage()
+            }
+            imageLoadQueue.addOperation(imageLoadOperation)
+            
+        } else {
+            hideLoadingViewForImage()
+        }
+    }
+    
+    private func hideLoadingViewForImage() {
+        DispatchQueue.main.async {
+            self.drinkImageLoadingView.isHidden = true
         }
     }
     
     private func getDrinkDetails() {
         let decoder = JSONDecoder()
-        currentTask = URLSession.shared.dataTask(with: Constants.network.URLs.cocktailURL.appendingPathComponent(cocktailId), completionHandler: { [unowned self] dataRetrieved, response, error in
+        typealias urls = Constants.network.URLs
+        let queryItems = [URLQueryItem(name: urls.queryName, value: cocktailId)]
+        var cocktailDetails = URLComponents(string: urls.cocktailURL)
+        cocktailDetails?.queryItems = queryItems
+        currentTask = URLSession.shared.dataTask(with: cocktailDetails!.url!, completionHandler: { [unowned self] dataRetrieved, response, error in
             if let error = error {
                 print(error.localizedDescription)
             } else if let data = dataRetrieved, let response = response as? HTTPURLResponse, response.statusCode == 200 {

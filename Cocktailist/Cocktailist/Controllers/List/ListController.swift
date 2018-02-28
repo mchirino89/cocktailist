@@ -151,6 +151,7 @@ extension ListController: UITableViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let detailView = segue.destination as? DetailController, let cocktailInfo = sender as? (String, UIImage?) else { return }
+        print(cocktailInfo.0)
         detailView.cocktailId = cocktailInfo.0
         detailView.cocktailImage = cocktailInfo.1
     }

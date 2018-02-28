@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class ImageLoadOperation: Operation {
     typealias ImageLoadOperationCompletionHandlerType = ((UIImage) -> ())?
     var completionHandler: ImageLoadOperationCompletionHandlerType
@@ -23,9 +22,10 @@ class ImageLoadOperation: Operation {
         if isCancelled {
             return
         }
-        
+        queuePriority = .high
         UIImage.downloadImageFromUrl(url) { [weak self] (retrievedImage) in
             guard let strongSelf = self, !strongSelf.isCancelled, let image = retrievedImage else { return }
+            
             strongSelf.image = image
             strongSelf.completionHandler?(image)
         }
@@ -34,17 +34,17 @@ class ImageLoadOperation: Operation {
 
 extension UIImage {
     static func downloadImageFromUrl(_ url: URL, completionHandler: @escaping (UIImage?) -> Void) {
-        let task: URLSessionDataTask = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) -> Void in
+        URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) -> Void in
             guard let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
                 let mimeType = response?.mimeType, mimeType.hasPrefix(Constants.network.imageMime),
                 let data = data, error == nil,
                 let image = UIImage(data: data) else {
+                    print("error downloading image")
                     completionHandler(nil)
                     return
             }
             completionHandler(image)
-        })
-        task.resume()
+        }).resume()
     }
 }
 

@@ -24,7 +24,8 @@ struct Constants {
         
         struct URLs {
             static let root = URL(string: "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass")!
-            static let cocktailURL = URL(string: "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=")!
+            static let cocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php"
+            static let queryName = "i"
         }
     }
     
