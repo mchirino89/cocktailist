@@ -88,6 +88,7 @@ class ListController: UIViewController {
     private func clearNavigationBar() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
+        drinkSearchBar.backgroundImage = UIImage()
     }
     
     private func polishCells() {
