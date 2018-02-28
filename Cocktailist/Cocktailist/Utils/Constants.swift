@@ -42,11 +42,6 @@ struct Constants {
         static let preparation = "How to prepare\n"
     }
     
-    struct animation {
-        static let duration: TimeInterval = 0.3
-        static let fadeOut: CGFloat = 0
-    }
-    
     struct cell {
         static let name = "cocktailCell"
         static let height: CGFloat = 180
@@ -75,6 +70,12 @@ struct Design {
         static let radius: CGFloat = 2
         static let opacity: Float = 1/4
         static let offset = CGSize(width: 0, height: 1)
+    }
+    
+    struct animation {
+        static let duration: TimeInterval = 0.3
+        static let fadeOut: CGFloat = 0
+        static let visible: CGFloat = 56
     }
     
 }

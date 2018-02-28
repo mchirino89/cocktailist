@@ -47,7 +47,7 @@ class DetailController: UIViewController {
             }
             let data = try Data(contentsOf: file)
             let decoded = try decoder.decode(DrinkDetails.self, from: data)
-            setInterface(drinkData: decoded.drinks.first!)
+            setInterface(drinkData: decoded.drinksDetails.first!)
         } catch {
             print(error.localizedDescription)
         }
@@ -113,7 +113,7 @@ class DetailController: UIViewController {
                 do {
                     let decoded = try decoder.decode(DrinkDetails.self, from: data)
                     DispatchQueue.main.async {
-                        self.setInterface(drinkData: decoded.drinks.first!)
+                        self.setInterface(drinkData: decoded.drinksDetails.first!)
                     }
                 } catch {
                     print(error.localizedDescription)

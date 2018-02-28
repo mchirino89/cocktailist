@@ -9,10 +9,10 @@
 import Foundation
 
 struct DrinkDetails: Decodable {
-    let drinks: [[String: String?]]
+    let drinksDetails: [[String: String?]]
     
     enum CodingKeys: String, CodingKey {
-        case drinks
+        case drinksDetails = "drinks"
     }
 }
 
@@ -21,10 +21,10 @@ extension DrinkDetails {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         var dictionary: [[String: String?]] = []
         do {
-            dictionary = try container.decode([[String: String?]].self, forKey: .drinks)
+            dictionary = try container.decode([[String: String?]].self, forKey: .drinksDetails)
         } catch {
             print(error.localizedDescription)
         }
-        self.init(drinks: dictionary)
+        self.init(drinksDetails: dictionary)
     }
 }

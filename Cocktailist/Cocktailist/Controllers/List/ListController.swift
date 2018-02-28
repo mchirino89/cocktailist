@@ -12,13 +12,16 @@ class ListController: UIViewController {
 
     @IBOutlet weak var cocktailTableView: UITableView!
     @IBOutlet weak var filterBarButton: UIBarButtonItem!
+    @IBOutlet weak var drinkSearchBar: UISearchBar!
     @IBOutlet weak var searchBarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var initLoadView: UIView!
-    private(set) var drinkList: DrinkList?
     private let decoder = JSONDecoder()
+    let imageLoadQueue = OperationQueue()
     let cache = NSCache<NSString, UIImage>()
     var imageLoadOperations = [IndexPath: ImageLoadOperation]()
-    let imageLoadQueue = OperationQueue()
+    var drinkList: DrinkList?
+    var drinksBackUp: [Drink] = []
+    typealias animate = Design.animation
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +32,19 @@ class ListController: UIViewController {
     }
 
     @IBAction func filterCocktailsAction(_ sender: UIBarButtonItem) {
+        toggleSearch(isHidden: searchBarHeightConstraint.constant == animate.visible)
     }
     
-    fileprivate func toggleSearch(isVisible: Bool) {
-        
+    func toggleSearch(isHidden: Bool) {
+        searchBarHeightConstraint.constant = isHidden ? animate.fadeOut : animate.visible
+        if searchBarHeightConstraint.constant == animate.visible {
+            drinkSearchBar.becomeFirstResponder()
+        } else {
+            drinkSearchBar.resignFirstResponder()
+        }
+        UIView.animate(withDuration: animate.duration, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
     
     fileprivate func getCachedDrinkImage(at key: NSString) -> UIImage? {
@@ -76,7 +88,6 @@ class ListController: UIViewController {
     private func clearNavigationBar() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        filterBarButton.isEnabled = true
     }
     
     private func polishCells() {
@@ -103,13 +114,15 @@ class ListController: UIViewController {
             } else if let data = dataRetrieved, let response = response as? HTTPURLResponse, response.statusCode == 200 {
                 do {
                     self.drinkList = try self.decoder.decode(DrinkList.self, from: data)
+                    self.drinksBackUp = self.drinkList!.drinks
                     DispatchQueue.main.async {
                         self.cocktailTableView.reloadData()
                         self.cocktailTableView.reloadRows(at: self.cocktailTableView.indexPathsForVisibleRows!, with: .middle)
-                        UIView.animate(withDuration: Constants.animation.duration, animations: {
-                            self.initLoadView.alpha = Constants.animation.fadeOut
+                        UIView.animate(withDuration: animate.duration, animations: {
+                            self.initLoadView.alpha = animate.fadeOut
                         }, completion: { _ in
                             self.view.sendSubview(toBack: self.initLoadView)
+                            self.filterBarButton.isEnabled = true
                         })
                     }
                 } catch {
