@@ -182,16 +182,16 @@
                                         <rect key="frame" x="16" y="16" width="375" height="523"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UPb-QL-dW2">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="444.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="274.5"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cocktailPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="mEB-0Q-Lu3" userLabel="drink Image View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="444.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="274.5"/>
                                                     </imageView>
                                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igd-lu-tvu">
-                                                        <rect key="frame" x="-0.5" y="0.0" width="375" height="444.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="274.5"/>
                                                         <subviews>
                                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="R1O-dP-x5E">
-                                                                <rect key="frame" x="156" y="203.5" width="37" height="37"/>
+                                                                <rect key="frame" x="155.5" y="119.5" width="37" height="37"/>
                                                                 <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </activityIndicatorView>
                                                         </subviews>
@@ -215,21 +215,34 @@
                                                 </constraints>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1Y-2S-HcD" userLabel="ingredients Text View">
-                                                <rect key="frame" x="0.0" y="452.5" width="375" height="31"/>
+                                                <rect key="frame" x="0.0" y="282.5" width="375" height="116.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <attributedString key="attributedText"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content=" ">
+                                                        <attributes>
+                                                            <font key="NSFont" size="18" name="Helvetica"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" lineHeightMultiple="1.25" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9DE-KN-luL" userLabel="preparation Text View">
-                                                <rect key="frame" x="0.0" y="491.5" width="375" height="31.5"/>
+                                                <rect key="frame" x="0.0" y="407" width="375" height="116"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <attributedString key="attributedText"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content=" ">
+                                                        <attributes>
+                                                            <font key="NSFont" size="18" name=".SFNSText"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" lineHeightMultiple="1.25" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="9DE-KN-luL" firstAttribute="height" secondItem="P1Y-2S-HcD" secondAttribute="height" id="hW4-e5-8GF"/>
-                                            <constraint firstItem="UPb-QL-dW2" firstAttribute="height" secondItem="vVx-WY-5IX" secondAttribute="height" multiplier="0.46" id="vgR-bG-CNE"/>
+                                            <constraint firstItem="P1Y-2S-HcD" firstAttribute="height" secondItem="9DE-KN-luL" secondAttribute="height" id="bSV-e1-YKg"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -239,6 +252,7 @@
                                     <constraint firstItem="vVx-WY-5IX" firstAttribute="height" secondItem="SGH-Oe-ebs" secondAttribute="height" constant="-32" id="Lmv-0C-VKF"/>
                                     <constraint firstItem="vVx-WY-5IX" firstAttribute="centerY" secondItem="SGH-Oe-ebs" secondAttribute="centerY" id="Tid-LO-hwi"/>
                                     <constraint firstItem="vVx-WY-5IX" firstAttribute="width" secondItem="SGH-Oe-ebs" secondAttribute="width" constant="-32" id="fga-h4-cg4"/>
+                                    <constraint firstItem="P1Y-2S-HcD" firstAttribute="height" secondItem="SGH-Oe-ebs" secondAttribute="height" multiplier="0.21" id="yly-AK-5xC"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">

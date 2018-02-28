@@ -42,6 +42,7 @@ class ListController: UIViewController {
             if let imageLoadOperation = imageLoadOperations[index],
                 let image = imageLoadOperation.image {
                 setDrinkImage(cell, image, currentURL.absoluteString)
+                self.cache.setObject(image, forKey: currentURL.absoluteString as NSString)
             } else {
                 let imageLoadOperation = ImageLoadOperation(url: currentURL)
                 imageLoadOperation.completionHandler = { [unowned self] (image) in
@@ -151,7 +152,7 @@ extension ListController: UITableViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let detailView = segue.destination as? DetailController, let cocktailInfo = sender as? (String, UIImage?) else { return }
-        print(cocktailInfo.0)
+        print(cocktailInfo.1 ?? "no image for \(cocktailInfo.0)")
         detailView.cocktailId = cocktailInfo.0
         detailView.cocktailImage = cocktailInfo.1
     }
