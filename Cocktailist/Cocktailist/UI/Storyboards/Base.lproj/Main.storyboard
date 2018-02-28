@@ -25,8 +25,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="rUX-nX-j6B">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="76k-lu-8OY"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="01J-lp-oVM" id="gqF-aC-qfW"/>
+                                </connections>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CgY-xY-Snd">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cocktailCell" rowHeight="120" id="YGo-1T-oBd" customClass="CocktailTableViewCell" customModule="Cocktailist" customModuleProvider="target">
@@ -124,10 +134,10 @@
                                 </connections>
                             </tableView>
                             <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1A5-X2-CNJ">
-                                <rect key="frame" x="-0.5" y="64" width="375" height="603"/>
+                                <rect key="frame" x="-0.5" y="120" width="375" height="547"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="xda-oE-RAe">
-                                        <rect key="frame" x="169.5" y="283" width="37" height="37"/>
+                                        <rect key="frame" x="169.5" y="255" width="37" height="37"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -143,10 +153,13 @@
                             <constraint firstItem="1A5-X2-CNJ" firstAttribute="height" secondItem="CgY-xY-Snd" secondAttribute="height" id="AFT-Gr-zpi"/>
                             <constraint firstItem="1A5-X2-CNJ" firstAttribute="centerY" secondItem="CgY-xY-Snd" secondAttribute="centerY" id="CZs-1c-FEN"/>
                             <constraint firstItem="CgY-xY-Snd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ClG-n7-9Sw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CgY-xY-Snd" secondAttribute="bottom" id="GF7-hJ-Vp8"/>
+                            <constraint firstItem="rUX-nX-j6B" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="IJN-Ha-Vn6"/>
                             <constraint firstItem="1A5-X2-CNJ" firstAttribute="centerX" secondItem="CgY-xY-Snd" secondAttribute="centerX" id="KN1-50-I5B"/>
-                            <constraint firstItem="CgY-xY-Snd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Prt-Ip-kqt"/>
+                            <constraint firstItem="CgY-xY-Snd" firstAttribute="top" secondItem="rUX-nX-j6B" secondAttribute="bottom" id="UOd-Jf-v06"/>
                             <constraint firstItem="1A5-X2-CNJ" firstAttribute="width" secondItem="CgY-xY-Snd" secondAttribute="width" id="aMY-kK-7xV"/>
-                            <constraint firstItem="CgY-xY-Snd" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="jqH-in-C8F"/>
+                            <constraint firstItem="rUX-nX-j6B" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="jfo-cL-COG"/>
+                            <constraint firstItem="rUX-nX-j6B" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="mm7-4H-3Fh"/>
                             <constraint firstItem="CgY-xY-Snd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uzX-RA-Ksa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -154,12 +167,16 @@
                     <navigationItem key="navigationItem" title="Cocktail list" id="JLS-SE-JKN">
                         <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="search" id="fEw-Ho-ytj">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="filterCocktailsAction:" destination="01J-lp-oVM" id="DHw-g4-KpY"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="cocktailTableView" destination="CgY-xY-Snd" id="RZ2-49-d4V"/>
                         <outlet property="filterBarButton" destination="fEw-Ho-ytj" id="QC4-u9-ohC"/>
                         <outlet property="initLoadView" destination="1A5-X2-CNJ" id="Qng-Mo-tNE"/>
+                        <outlet property="searchBarHeightConstraint" destination="76k-lu-8OY" id="mVn-XJ-mzL"/>
                         <segue destination="nHT-ud-1hq" kind="show" identifier="cocktailDetailSegue" id="5wY-va-hla"/>
                     </connections>
                 </viewController>

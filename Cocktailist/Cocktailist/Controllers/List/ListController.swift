@@ -12,12 +12,13 @@ class ListController: UIViewController {
 
     @IBOutlet weak var cocktailTableView: UITableView!
     @IBOutlet weak var filterBarButton: UIBarButtonItem!
+    @IBOutlet weak var searchBarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var initLoadView: UIView!
-    private var drinkList: DrinkList?
+    private(set) var drinkList: DrinkList?
     private let decoder = JSONDecoder()
-    fileprivate let imageLoadQueue = OperationQueue()
-    fileprivate var imageLoadOperations = [IndexPath: ImageLoadOperation]()
-    private let cache = NSCache<NSString, UIImage>()
+    let cache = NSCache<NSString, UIImage>()
+    var imageLoadOperations = [IndexPath: ImageLoadOperation]()
+    let imageLoadQueue = OperationQueue()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,13 @@ class ListController: UIViewController {
         polishCells()
     }
 
+    @IBAction func filterCocktailsAction(_ sender: UIBarButtonItem) {
+    }
+    
+    fileprivate func toggleSearch(isVisible: Bool) {
+        
+    }
+    
     fileprivate func getCachedDrinkImage(at key: NSString) -> UIImage? {
         guard let cachedVersion = cache.object(forKey: key) else { return nil }
         return cachedVersion
@@ -36,18 +44,18 @@ class ListController: UIViewController {
         cache.setObject(image, forKey: key)
     }
     
-    fileprivate func queueDrinkImage(for cell: CocktailTableViewCell, at index: IndexPath) {
+    func queueDrinkImage(for cell: CocktailTableViewCell, at index: IndexPath) {
         let currentURL = drinkList!.drinks[index.row].image
         guard let cachedImage = getCachedDrinkImage(at: currentURL.absoluteString as NSString) else {
             if let imageLoadOperation = imageLoadOperations[index],
                 let image = imageLoadOperation.image {
                 setDrinkImage(cell, image, currentURL.absoluteString)
-                self.cache.setObject(image, forKey: currentURL.absoluteString as NSString)
+                setCachedDrinkImage(currentURL.absoluteString as NSString, image)
             } else {
                 let imageLoadOperation = ImageLoadOperation(url: currentURL)
                 imageLoadOperation.completionHandler = { [unowned self] (image) in
                     self.setDrinkImage(cell, image, currentURL.absoluteString)
-                    self.cache.setObject(image, forKey: currentURL.absoluteString as NSString)
+                    self.setCachedDrinkImage(currentURL.absoluteString as NSString, image)
                     self.imageLoadOperations.removeValue(forKey: index)
                 }
                 imageLoadQueue.addOperation(imageLoadOperation)
@@ -68,6 +76,7 @@ class ListController: UIViewController {
     private func clearNavigationBar() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
+        filterBarButton.isEnabled = true
     }
     
     private func polishCells() {
@@ -111,74 +120,3 @@ class ListController: UIViewController {
     }
 
 }
-
-extension ListController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return Constants.units.tableSections
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let drinks = drinkList?.drinks else { return 0 }
-        return drinks.count
-    }
-}
-
-extension ListController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Constants.cell.height
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cell.name) as! CocktailTableViewCell
-        cell.setDrink(cellDrink: drinkList!.drinks[indexPath.row], index: indexPath)
-        queueDrinkImage(for: cell, at: indexPath)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let infoTuple: (String, UIImage?) = (drinkList!.drinks[indexPath.row].id, cache.object(forKey: drinkList!.drinks[indexPath.row].image.absoluteString as NSString))
-        performSegue(withIdentifier: Constants.UI.detailsSegue, sender: infoTuple)
-    }
-    
-    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let imageLoadOperation = imageLoadOperations[indexPath] else {
-            return
-        }
-        imageLoadOperation.cancel()
-        imageLoadOperations.removeValue(forKey: indexPath)
-        
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let detailView = segue.destination as? DetailController, let cocktailInfo = sender as? (String, UIImage?) else { return }
-        print(cocktailInfo.1 ?? "no image for \(cocktailInfo.0)")
-        detailView.cocktailId = cocktailInfo.0
-        detailView.cocktailImage = cocktailInfo.1
-    }
-    
-}
-
-extension ListController: UITableViewDataSourcePrefetching {
-    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths {
-            if let _ = imageLoadOperations[indexPath] {
-                return
-            }
-            let imageLoadOperation = ImageLoadOperation(url: drinkList!.drinks[indexPath.row].image)
-            imageLoadQueue.addOperation(imageLoadOperation)
-            imageLoadOperations[indexPath] = imageLoadOperation
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths {
-            guard let imageLoadOperation = imageLoadOperations[indexPath] else {
-                return
-            }
-            imageLoadOperation.cancel()
-            imageLoadOperations.removeValue(forKey: indexPath)
-        }
-    }
-}
-
