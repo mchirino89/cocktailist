@@ -20,6 +20,7 @@ class DetailController: UIViewController {
     
     override func viewDidLoad() {
         drinkImageView.image = cocktailImage ?? #imageLiteral(resourceName: "cocktailPlaceholder")
+        preparationTextView.text = Constants.UI.preparation
         defineShadow()
 //        getDrinkDetails()
         readLocalFile(resource: Constants.json.details, type: Constants.json.type)
@@ -47,13 +48,20 @@ class DetailController: UIViewController {
     
     private func setInterface(drinkData: [String: String?]) {
         typealias info = Constants.drinkInfo
-        title = drinkData[info.title.rawValue] ?? "Drink \(cocktailId)"
-        print(drinkData[info.instructions.rawValue] ?? "no instructions")
-        print(drinkData[info.image.rawValue] ?? "no image")
-        
-//        while <#condition#> {
-//            <#code#>
-//        }
+        var i = 1
+        var measures = ""
+        while i < Constants.units.ingredientsCount {
+            if let ingredientN = drinkData["\(info.ingredient.rawValue)\(i)"], !ingredientN!.isEmpty {
+                let measureN = drinkData["\(info.measure.rawValue)\(i)"] ?? ""
+                measures.append("\(measureN ?? "") - \(ingredientN ?? "")\n")
+            }
+            i+=1
+        }
+        DispatchQueue.main.async { [unowned self] in
+            self.title = drinkData[info.title.rawValue] ?? "Drink \(self.cocktailId)"
+            self.ingredientsTextView.text = measures
+            self.preparationTextView.text.append(drinkData[info.instructions.rawValue]! ?? "")
+        }
     }
     
     private func getDrinkDetails() {

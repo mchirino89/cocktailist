@@ -31,13 +31,14 @@ struct Constants {
     enum drinkInfo: String {
         case title = "strDrink"
         case ingredient = "strIngredient"
-        case measure = "strMeasure1"
+        case measure = "strMeasure"
         case instructions = "strInstructions"
         case image = "strDrinkThumb"
     }
     
     struct UI {
         static let detailsSegue = "cocktailDetailSegue"
+        static let preparation = "How to prepare\n"
     }
     
     struct animation {
@@ -53,6 +54,7 @@ struct Constants {
     struct units {
         static let beggining = 0
         static let tableSections = 1
+        static let ingredientsCount = 15
     }
 }
 
